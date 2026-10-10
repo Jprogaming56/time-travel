@@ -118,7 +118,11 @@ public final class TimeTravelController {
     private static ServerLevel levelFor(MinecraftServer server, TravelHandler travel, TravelHandlerBase.State state) {
         ServerLevel level = null;
         try {
-            level = (state == TravelHandlerBase.State.LANDED ? travel.position() : travel.destination()).getWorld();
+            // Reflection on purpose: the position type extends a class from AmbleKit, which the build doesn't have.
+            String method = state == TravelHandlerBase.State.LANDED ? "position" : "destination";
+            Object pos = travel.getClass().getMethod(method).invoke(travel);
+            Object world = pos.getClass().getMethod("getWorld").invoke(pos);
+            if (world instanceof ServerLevel serverLevel) level = serverLevel;
         } catch (Throwable ignored) { }
         return level != null ? level : server.overworld();
     }
