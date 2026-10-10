@@ -1,0 +1,32 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+license = "All rights reserved"
+
+[[mods]]
+modId = "aittimetravel"
+version = "1.0.0"
+displayName = "AiT Time Travel"
+description = '''
+Adds a Time Dial block for Adventures in Time. Pick a time of day, take off, and the sky races to that time before the TARDIS lands again.
+'''
+
+[[dependencies.aittimetravel]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.aittimetravel]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,1.21)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.aittimetravel]]
+modId = "ait"
+mandatory = true
+versionRange = "*"
+ordering = "AFTER"
+side = "BOTH"
