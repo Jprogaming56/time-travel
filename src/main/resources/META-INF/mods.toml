@@ -1,32 +1,33 @@
 modLoader = "javafml"
 loaderVersion = "[47,)"
-license = "All rights reserved"
+license = "All Rights Reserved"
 
 [[mods]]
-modId = "aittimetravel"
-version = "1.0.0"
-displayName = "AiT Time Travel"
-description = '''
-Adds a Time Dial block for Adventures in Time. Pick a time of day, take off, and the sky races to that time before the TARDIS lands again.
-'''
+modId = "timetravel"
+version = "${version}"
+displayName = "AIT Time Travel"
+description = '''Personal AIT addon: set a land-at time of day from the Monitor.'''
 
-[[dependencies.aittimetravel]]
+[[mixins]]
+config = "timetravel.mixins.json"
+
+[[dependencies.timetravel]]
 modId = "forge"
 mandatory = true
 versionRange = "[47,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.aittimetravel]]
+[[dependencies.timetravel]]
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.20.1,1.21)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.aittimetravel]]
+[[dependencies.timetravel]]
 modId = "ait"
 mandatory = true
-versionRange = "*"
+versionRange = "[1.2.12,)"
 ordering = "AFTER"
 side = "BOTH"
