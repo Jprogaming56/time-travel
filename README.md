@@ -10,6 +10,17 @@ Set a "land at" time of day on AIT's Monitor, then fly as normal with the thrott
 - `config/timetravel.json`: `rampTicksPerTick` (how fast the sky races) and `autoLand`
   (true = the TARDIS lands by itself once the time is reached; default false).
 
+## Plants keep growing
+Skipping the clock doesn't run any game ticks, so normally crops and trees would not grow. This mod gives every
+growing block (crops, stems, saplings, sugar cane, cactus, kelp, vines, bamboo, cocoa, nether wart, berries,
+mushrooms, chorus) the random ticks it would have had over the skipped time.
+
+- Chunks that are loaded during the trip are caught up while the sky spins.
+- Chunks that are not loaded (e.g. the world around a TARDIS that is in the vortex) are caught up the next time they
+  load. Each saved chunk is stamped with the total skipped time; on load the difference is applied.
+- `config/timetravel.json`: `growPlants` (default true) and `catchUpUnloadedChunks` (default true).
+- Growth rules still apply at catch-up time (crops need light, saplings need room, ...).
+
 ## Build
 1. JDK 17 and Gradle 8.x.
 2. Put these in `libs/` (compile-only, never bundled):

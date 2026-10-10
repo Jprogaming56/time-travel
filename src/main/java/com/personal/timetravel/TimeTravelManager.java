@@ -260,6 +260,7 @@ public final class TimeTravelManager {
         ServerLevel overworld = server.overworld();
         long newTime = overworld.getDayTime() + step;
         overworld.setDayTime(newTime);
+        PlantGrowth.skipped(server, step);
         ClientboundSetTimePacket packet = new ClientboundSetTimePacket(
                 overworld.getGameTime(), newTime, overworld.getGameRules().getBoolean(GameRules.RULE_DAYLIGHT));
         PlayerList players = server.getPlayerList();

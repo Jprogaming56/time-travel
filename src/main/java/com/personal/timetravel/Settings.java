@@ -19,6 +19,10 @@ public final class Settings {
     public int rampTicksPerTick = 150;
     /** Rematerialise by itself once the chosen time is reached (otherwise you land it yourself). */
     public boolean autoLand = false;
+    /** Plants (crops, saplings, cane, kelp, ...) grow by the amount of time that was skipped. */
+    public boolean growPlants = true;
+    /** Also catch up chunks that aren't loaded during the trip, the next time they load. */
+    public boolean catchUpUnloadedChunks = true;
 
     private static Settings INSTANCE = new Settings();
 

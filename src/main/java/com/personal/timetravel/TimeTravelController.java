@@ -100,6 +100,7 @@ public final class TimeTravelController {
 
         if (state == TravelHandlerBase.State.LANDED) {
             level.setDayTime(now + delta);
+            PlantGrowth.skipped(server, delta);
             ServerPlayer p = server.getPlayerList().getPlayer(SETTERS.getOrDefault(id, new UUID(0, 0)));
             if (p != null) p.sendSystemMessage(Component.literal("Arrived. It is now " + clock(target) + "."));
             return true;
@@ -107,7 +108,9 @@ public final class TimeTravelController {
 
         if (state == TravelHandlerBase.State.FLIGHT) {
             if (delta > 0) {
-                level.setDayTime(now + Math.min(delta, Settings.get().rampTicksPerTick));
+                long step = Math.min(delta, Settings.get().rampTicksPerTick);
+                level.setDayTime(now + step);
+                PlantGrowth.skipped(server, step);
             } else if (Settings.get().autoLand && LANDING.add(id)) {
                 travel.rematerialize();
             }
